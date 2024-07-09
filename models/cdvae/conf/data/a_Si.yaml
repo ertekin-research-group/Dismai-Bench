@@ -1,0 +1,73 @@
+root_path: /path/to/data/train_val_data/cdvae/a_Si
+load_saved_datasets: true
+prop: energy_per_atom
+num_targets: 1
+niggli: false
+primitive: false
+graph_method: crystalnn
+lattice_scale_method: scale_length
+preprocess_workers: 8
+readout: mean
+max_atoms: 256
+max_atomic_num: 14
+otf_graph: false
+eval_model_name: a_Si
+
+
+train_max_epochs: 1000
+early_stopping_patience: 100000
+teacher_forcing_max_epoch: 500
+
+
+datamodule:
+  _target_: cdvae.pl_data.datamodule.CrystDataModule
+
+  datasets:
+    train:
+      _target_: cdvae.pl_data.dataset.CrystDataset
+      name: DFT energy train
+      path: ${data.root_path}/train.csv
+      prop: ${data.prop}
+      niggli: ${data.niggli}
+      primitive: ${data.primitive}
+      graph_method: ${data.graph_method}
+      lattice_scale_method: ${data.lattice_scale_method}
+      preprocess_workers: ${data.preprocess_workers}
+      max_atoms: ${data.max_atoms}
+      max_atomic_num: ${data.max_atomic_num}
+
+    val:
+      - _target_: cdvae.pl_data.dataset.CrystDataset
+        name: DFT energy val
+        path: ${data.root_path}/val.csv
+        prop: ${data.prop}
+        niggli: ${data.niggli}
+        primitive: ${data.primitive}
+        graph_method: ${data.graph_method}
+        lattice_scale_method: ${data.lattice_scale_method}
+        preprocess_workers: ${data.preprocess_workers}
+        max_atoms: ${data.max_atoms}
+        max_atomic_num: ${data.max_atomic_num}
+
+    test:
+      - _target_: cdvae.pl_data.dataset.CrystDataset
+        name: DFT energy test
+        path: ${data.root_path}/test.csv
+        prop: ${data.prop}
+        niggli: ${data.niggli}
+        primitive: ${data.primitive}
+        graph_method: ${data.graph_method}
+        lattice_scale_method: ${data.lattice_scale_method}
+        preprocess_workers: ${data.preprocess_workers}
+        max_atoms: ${data.max_atoms}
+        max_atomic_num: ${data.max_atomic_num}
+
+  num_workers:
+    train: 0
+    val: 0
+    test: 0
+
+  batch_size:
+    train: 8
+    val: 8
+    test: 8
