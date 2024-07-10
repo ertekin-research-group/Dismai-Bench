@@ -1,4 +1,15 @@
 # CDVAE
+
+## Table of contents
+- [Prerequisites](#prerequisites)
+- [Setting up CDVAE](#setting-up-cdvae)
+- [Configuring CDVAE training runs](#configuring-cdvae-training-runs)
+- [(Optional) Saving graphs for faster dataset loading](#optional-saving-graphs-for-faster-dataset-loading)
+- [Training CDVAE](#training-cdvae)
+- [Restarting training](#restarting-training)
+- [Generating structures](#generating-structures)
+- [Note regarding composition prediction](#note-regarding-composition-prediction)
+
 ## Prerequisites
 CDVAE requires the following packages:
 - pytorch = 1.13.0
@@ -131,3 +142,36 @@ Convert the saved `.pt` file to a `.extxyz` file using the [convert_gen_pt_to_ex
 ```
 python /path/to/scripts/convert_gen_pt_to_extxyz.py --data eval_gen.pt
 ```
+
+## Note regarding composition prediction
+This modified CDVAE code has an additional feature that was not used in the Dismai-Bench paper.
+
+The original CDVAE implementation predicts the composition of materials directly (regression). 
+This modified CDVAE allows composition to be predicted through a classification route, 
+by predicting the atomic species of each atom in a structure, instead of the overall composition.
+This feature can be turned on by setting `pred_comp_using_atom_types` to true in [vae.yaml](https://github.com/ertekin-research-group/Dismai-Bench/blob/main/models/cdvae/conf/model/vae.yaml).
+
+The table below shows the composition accuracy of the reconstructed test set structures using the two methods. 
+Without atomic species denoising, predicting composition by atomic species gives higher composition accuracies.
+With atomic species denoising, the composition accuracy is similar between the two, 
+where predicting composition by atomic species gives slightly lower composition accuracy.
+
+In short, if you do not use atomic species denoising (e.g., training on large structures), and your dataset consists of many different compositions,
+then predicting composition by atomic species may give you better composition accuracy. Otherwise, there is little difference between the two.
+
+<ins>**MP-20**</ins>
+|                                    | Predict composition (%) |  Predict atomic species (%) |
+|                :---                |           :---:         |             :---:           |
+| Without atomic species denoising   |   23.6<br>(21.6, 25.5)  |     32.3<br>(31.3, 33.1)    |
+| With atomic species denoising      |   54.0<br>(53.5, 54.7)  |     53.1<br>(52.4, 54.0)    |
+
+<ins>**Perov-5**</ins>
+|                                    | Predict composition (%) |  Predict atomic species (%) |
+|                :---                |           :---:         |             :---:           |
+| Without atomic species denoising   |   90.4<br>(90.0, 91.0)  |     96.0<br>(94.3, 97.1)    |
+| With atomic species denoising      |   99.1<br>(99.0, 99.2)  |     98.5<br>(98.1, 98.8)    |
+
+*For each model configuration, 3 separate models were trained and the composition accuracies were averaged. 
+The minimum and maximum accuracies are shown in brackets. 
+Note that for models where composition is predicted by atomic species, `hidden_dim` of the composition MLP was set to 128 (instead of 256),
+and `type_sigma_begin` was set to 1 (instead of 5).*
