@@ -151,7 +151,7 @@ This modified CDVAE allows composition to be predicted through a classification 
 by predicting the atomic species of each atom in a structure, instead of the overall composition.
 This feature can be turned on by setting `pred_comp_using_atom_types` to true in [vae.yaml](https://github.com/ertekin-research-group/Dismai-Bench/blob/main/models/cdvae/conf/model/vae.yaml).
 
-The table below shows the composition accuracy of the reconstructed test set structures using the two methods. 
+The tables below show the composition accuracies of the reconstructed test set structures using the two methods. 
 Without atomic species denoising, predicting composition by atomic species gives higher composition accuracies.
 With atomic species denoising, the composition accuracy is similar between the two, 
 where predicting composition by atomic species gives slightly lower composition accuracy.
@@ -159,13 +159,13 @@ where predicting composition by atomic species gives slightly lower composition 
 In short, if you do not use atomic species denoising (e.g., training on large structures), and your dataset consists of many different compositions,
 then predicting composition by atomic species may give you better composition accuracy. Otherwise, there is little difference between the two.
 
-<ins>**MP-20**</ins>
+<ins>**MP-20 composition accuracy**</ins>
 |                                    | Predict composition (%) |  Predict atomic species (%) |
 |                :---                |           :---:         |             :---:           |
 | Without atomic species denoising   |   23.6<br>(21.6, 25.5)  |     32.3<br>(31.3, 33.1)    |
 | With atomic species denoising      |   54.0<br>(53.5, 54.7)  |     53.1<br>(52.4, 54.0)    |
 
-<ins>**Perov-5**</ins>
+<ins>**Perov-5 composition accuracy**</ins>
 |                                    | Predict composition (%) |  Predict atomic species (%) |
 |                :---                |           :---:         |             :---:           |
 | Without atomic species denoising   |   90.4<br>(90.0, 91.0)  |     96.0<br>(94.3, 97.1)    |
