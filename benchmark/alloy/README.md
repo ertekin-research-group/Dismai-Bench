@@ -50,12 +50,18 @@ All necessary scripts are found in the `cluster_counts` directory.
    python /path/to/cluster_counts/collect_batch_cluster_counts.py
    ```
 
-2. Analyze the cluster counts:
+   Note that the algorithm for counting vacancies is simple and susceptible to errors, especially for noisy lattices,
+   so the number of vacancies should be treated as estimates only.
+   However, the results are accurate for determining if a structure has or does not have vacancies (i.e., 0 or >0 vacancies).
+   If you used `remove_atoms_not_on_lattice_cryingan.py` or `remove_atoms_not_on_lattice_diffcsp.py` to post-process
+   your dataset, the vacancy counts from those scripts are accurate.
+
+3. Analyze the cluster counts:
    ```
    python /path/to/cluster_counts/analyze_cluster_count.py
    ```
 
-3. Calculate alloy metrics:
+4. Calculate alloy metrics:
 
    300K narrow SRO dataset as example here,
    ```
@@ -65,14 +71,14 @@ All necessary scripts are found in the `cluster_counts` directory.
 
    Set `n_strucs_ori` to the number of structures that was in your original dataset (before any post-processing).
 
-4. Plot the formation energy distribution:
+5. Plot the formation energy distribution:
 
    300K narrow SRO dataset as example here,
    ```
    python /path/to/cluster_counts/plot_energy_distribution.py --gen_data formation_energy.csv --train_data /path/to/data/dismai_bench_train_ref_data/alloy_300K_narrow/train_formation_energy.csv
    ```
 
-5. Plot the Warren-Cowley SRO parameters:
+6. Plot the Warren-Cowley SRO parameters:
 
    300K narrow SRO dataset as example here,
    ```
