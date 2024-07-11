@@ -88,5 +88,5 @@ All necessary scripts are found in the `motif` directory.
    python /path/to/motif/plot_most_likely_motifs/plot_most_likely_Li_OP.py
    ```
    <p align="center">
-     <img src="../assets/int_motifs.png" width="500"> 
+     <img src="../../assets/int_motifs.png" width="500"> 
    </p>
