@@ -44,7 +44,7 @@ The five generative models benchmarked on Dismai-Bench are as follows:
 
 Please follow the links for instructions to set up and run any of the models. Note that CryinGAN is located in its own repository.
 
-Also note that 1-4 are modified versions of the original models, as described in our paper.
+Also note that 1-4 are modified versions of the original models, as described in the Dismai-Bench paper.
 
 ## Datasets and interatomic potentials
 The datasets and interatomic potentials are available here [to be updated].
@@ -54,6 +54,9 @@ Please follow the links below for specific benchmarking instructions:
 1. [Disordered LSC-LCO interface](https://github.com/ertekin-research-group/Dismai-Bench/tree/main/benchmark/int)
 2. [Amorphous silicon](https://github.com/ertekin-research-group/Dismai-Bench/tree/main/benchmark/a_Si)
 3. [Disordered stainless steel alloy](https://github.com/ertekin-research-group/Dismai-Bench/tree/main/benchmark/alloy)
+
+It is recommended to run benchmarking on multiple cpus instead of your own PC to speed up the process. 
+The scripts are written to facilitate parallel jobs.
 
 ## Citations
 *Please cite the appropriate paper(s) if used in your work:*
