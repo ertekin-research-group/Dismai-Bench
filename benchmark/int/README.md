@@ -78,7 +78,7 @@ All necessary scripts are found in the `motif` directory.
 
    Li motifs as example here,
    ```
-   python /path/to/motif/plot_most_likely_motifs/get_most_likely_Li_OP.py --data_train_dir /path/to/data/dismai_bench_train_ref_data/int/train_motif/cnn_stats_Li.csv
+   python /path/to/motif/plot_most_likely_motifs/get_most_likely_Li_OP.py --data_train /path/to/data/dismai_bench_train_ref_data/int/train_motif/cnn_stats_Li.csv
    ```
 
 5. Plot the distributions of most likely coordination motifs:
