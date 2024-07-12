@@ -47,7 +47,15 @@ Please follow the links for instructions to set up and run any of the models. No
 Also note that 1-4 are modified versions of the original models, as described in the Dismai-Bench paper.
 
 ## Datasets and interatomic potentials
-The datasets and interatomic potentials are available here [to be updated].
+The datasets and interatomic potentials are available [here](https://doi.org/10.5281/zenodo.12710372).
+
+`dismai_bench_train_ref_data` contains the training dataset reference data for calculating benchmark metrics.
+
+`potentials` contains the M3GNet and SOAP-GAP interatomic potentials.
+
+`train_val_data` contains the training and validation sets in .extxyz format, as well as in the input format of each generative model.
+
+`generated_data` contains the generated structures (post-processed and relaxed) from each generative model.
 
 ## Benchmarking
 Please follow the links below for specific benchmarking instructions:
