@@ -69,7 +69,21 @@ The scripts are written to facilitate parallel jobs.
 ## Citations
 *Please cite the appropriate paper(s) if used in your work:*
 
-Dismai-Bench [to be updated]
+<details>
+  <summary>Dismai-Bench</summary>
+  
+  ```
+  @misc{yong2024dismaibench,
+        title={Dismai-Bench: Benchmarking and designing generative models using disordered materials and interfaces}, 
+        author={Adrian Xiao Bin Yong and Tianyu Su and Elif Ertekin},
+        year={2024},
+        eprint={2404.06734},
+        archivePrefix={arXiv},
+        primaryClass={cond-mat.mtrl-sci},
+        url={https://arxiv.org/abs/2404.06734}, 
+  }
+  ```
+</details>
 
 <details>
   <summary>Disordered stainless steel alloy dataset and cluster expansion potential</summary>
