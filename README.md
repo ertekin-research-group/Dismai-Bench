@@ -73,14 +73,17 @@ The scripts are written to facilitate parallel jobs.
   <summary>Dismai-Bench</summary>
   
   ```
-  @misc{yong2024dismaibench,
-        title={Dismai-Bench: Benchmarking and designing generative models using disordered materials and interfaces}, 
-        author={Adrian Xiao Bin Yong and Tianyu Su and Elif Ertekin},
-        year={2024},
-        eprint={2404.06734},
-        archivePrefix={arXiv},
-        primaryClass={cond-mat.mtrl-sci},
-        url={https://arxiv.org/abs/2404.06734}, 
+  @article{yong2024dismaibench,
+           author = {Yong, Adrian Xiao Bin and Su, Tianyu and Ertekin, Elif},
+           title = {Dismai-Bench: benchmarking and designing generative models using disordered materials and interfaces},
+           journal = {Digital Discovery},
+           year = {2024},
+           volume = {3},
+           issue = {9},
+           pages = {1889-1909},
+           publisher = {RSC},
+           doi = {10.1039/D4DD00100A},
+           url = {http://dx.doi.org/10.1039/D4DD00100A}
   }
   ```
 </details>
