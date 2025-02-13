@@ -3,7 +3,7 @@ val_check_interval: 5
 progress_bar_refresh_rate: 20
 
 wandb:
-  name: ${expname}
+  name: ${runname}
   project: dismai-bench
   entity: null
   log_model: True
